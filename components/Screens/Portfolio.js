@@ -3,12 +3,15 @@ import {
     View,
     Text
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Portfolio = () => {
     return (
-        <View>
-            <Text>portfolio</Text>
-        </View>
+        <SafeAreaView>
+            <View>
+            <Text>Portfolio</Text>
+            </View>
+        </SafeAreaView>
     )
 }
 
