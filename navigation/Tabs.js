@@ -21,7 +21,7 @@ function Tabs() {
         tabBarIcon:({focused,color,size}) =>{
 
             let screenName = route.name;
-            let iconName;
+            
 
             if(screenName==="Home"){
                 return <AntDesign name="home" size={24} color="white" />
@@ -53,9 +53,10 @@ function Tabs() {
               fontSize: 12
             },
             tabBarStyle:{
-                height:70,
-                paddingTop:10,
-                backgroundColor:"black"
+                height:100,
+                paddingTop:15,
+                paddingBottom:15,
+                backgroundColor:"black",
             }
         
 
@@ -73,4 +74,4 @@ function Tabs() {
   );
 }
 
-export {Tabs};
+export default Tabs;
