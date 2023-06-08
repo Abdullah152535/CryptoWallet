@@ -11,22 +11,51 @@ import { BalanceInfo } from '../BalanceInfo';
 import { Feather } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { IconTextButton } from '../buttons/IconTextButton';
-
-
+import { Chart } from '../Chart';
+import { UseGetAPI } from '../../contextAPI/UseGetAPI';
+import axios from 'axios';
+import { FlatList } from 'react-native-gesture-handler';
 const Home = (navigation) => {
 
-    const {cryptoData} = useContext(CoinGeckoContext);
-    
-    const[data,setData] = useState(cryptoData);
+        const cryptoData = useContext(CoinGeckoContext);
+        
+        
+         const[data,setData] = useState(cryptoData);
+         const[chartdata,setChartData] = useState([]);
 
-    useEffect(()=>{
-        // console.log(cryptoData);
-        setData(cryptoData);
-    },[cryptoData])
+         useEffect(()=>{
+            setData(cryptoData);
+        })
+
+        useEffect(()=>{
+            getData();
+        })
+
+        useEffect(()=>{
+            setData(cryptoData);
+        },[data])
+         async function getData(){
+            try {
+                const response = await axios.get('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7');
+                const formatData = response.data.prices.map(function(i){
+                    return{
+                        x:i[0],
+                        y:i[1],
+                    }
+                })
+                setChartData(formatData); 
+            } catch (error) {
+                console.log(error);
+            }
+         }
+
+
+   
+
     return (
        <SafeAreaView style={styles.container}>
-        
 
+        
         {/* Wallet Info Section */}
         <View style={styles.walletInfo}>
            <View>{WalletInfo()}</View>
@@ -34,7 +63,7 @@ const Home = (navigation) => {
 
         {/* Chart Section */}
         <View style={styles.Graph}>
-           
+        {chartdata.length > 0 && <Chart containerStyle={{}} chartPrices={chartdata} />}
         </View>
 
         {/* Top Crypto Currencies */}
@@ -65,6 +94,11 @@ const WalletInfo = () => {
     );
 }
 
+const topCryptos =()=>{
+    return(
+        <FlatList/>
+    )
+}
 
 
 const styles = StyleSheet.create({
@@ -86,7 +120,9 @@ const styles = StyleSheet.create({
     Graph:{
         flex:1,
         // backgroundColor:"blue"
-        
+        marginTop:40,
+        marginLeft:-40,
+       
 
     },
     topCryptos:{
