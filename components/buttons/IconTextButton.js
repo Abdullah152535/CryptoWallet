@@ -23,7 +23,7 @@ const IconTextButton = ({label,icon}) =>{
 const styles = StyleSheet.create({
     main:{
 
-        height:50,
+        height:45,
         flex:1,
         backgroundColor: 'white',
         marginHorizontal: 5,

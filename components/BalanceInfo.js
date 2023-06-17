@@ -10,7 +10,7 @@ import { AntDesign } from '@expo/vector-icons';
 const BalanceInfo = ({title,displayAmount,changePct,containerStyle}) => {
 
     return (
-        <View style={{marginTop:15}}>
+        <View style={{marginTop:20}}>
         <Text style={[styles.text,{fontSize:14}]} >{title} </Text>
         <Text style={[styles.text,{fontSize:14}]} >$  <Text style={{fontWeight:"bold",fontSize:24,color:"white"}}>{displayAmount}</Text>  USD</Text>
 

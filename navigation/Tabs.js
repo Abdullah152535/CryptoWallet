@@ -67,7 +67,8 @@ function Tabs() {
         
       <Tab.Screen name="Home" component={Home}  options={{headerShown:false}}/>
       <Tab.Screen name="Portfolio" component={Portfolio} options={{headerShown:false}}/>
-      <Tab.Screen name="Trade" component={Trade} options={{headerShown:false}} />
+      <Tab.Screen name="Trade" component={Home} options={{headerShown:false}} 
+      />
       <Tab.Screen name="Market" component={Market} options={{headerShown:false}}/>
       <Tab.Screen name="Profile" component={Profile} options={{headerShown:false}}/>
     </Tab.Navigator>

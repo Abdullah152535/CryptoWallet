@@ -1,14 +1,17 @@
 import React from 'react';
+import { View } from 'react-native';
 import { color } from 'react-native-reanimated';
-import {  VictoryLine,VictoryChart } from "victory-native";
+import {  VictoryLine,VictoryChart,VictoryAxis } from "victory-native";
 
 const Chart = ({containerStyle,chartPrices}) => {
   return(
+    
 
-    <VictoryLine
+    <>
+      <VictoryLine
     style={{
       data:{
-        stroke:"white",
+        stroke:"green",
         strokeWidth:2
       },
       color:"red",
@@ -19,8 +22,9 @@ const Chart = ({containerStyle,chartPrices}) => {
     
       data={chartPrices}
     />
-  
-  
+    </>
+
+
   );
 }
 
