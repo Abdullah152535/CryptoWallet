@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {  View } from 'react-native';
+import { useState } from 'react';
+import {  View ,TouchableOpacity,Modal,StyleSheet} from 'react-native';
 import {Home}  from '../components/Screens/Home';
 import {Portfolio}  from '../components/Screens/Portfolio';
 import { Trade } from '../components/Screens/Trade';
@@ -14,8 +15,20 @@ import { Feather } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
-function Tabs() {
+function Tabs({navigation}) {
+
+  const [isVisible,setIsVisible] = useState(true);
+
+
+    function SetModal(){
+        setIsVisible(true);
+    }
+    function closeModal(){
+        setIsVisible(false);
+    }
+
   return (
+    <View style={{flex:1}}>
     <Tab.Navigator
     screenOptions={ ({route}) =>({
         tabBarIcon:({focused,color,size}) =>{
@@ -68,11 +81,45 @@ function Tabs() {
       <Tab.Screen name="Home" component={Home}  options={{headerShown:false}}/>
       <Tab.Screen name="Portfolio" component={Portfolio} options={{headerShown:false}}/>
       <Tab.Screen name="Trade" component={Home} options={{headerShown:false}} 
+           listeners={({ navigation }) => ({
+          tabPress: (e) => {
+            e.preventDefault()
+            SetModal();
+          },
+        })}
       />
       <Tab.Screen name="Market" component={Market} options={{headerShown:false}}/>
       <Tab.Screen name="Profile" component={Profile} options={{headerShown:false}}/>
     </Tab.Navigator>
+    {/* Tab Navigator ends here and Modal Component starts */}
+
+      <Modal visible={isVisible} transparent  >
+      <View style={styles.ModalContainer} >
+       <View style={styles.ModalStyle}>
+       <TouchableOpacity style={{width:100,height:70,backgroundColor:"grey",borderRadius:2}}
+      onPress={()=>closeModal()}>
+
+      </TouchableOpacity>
+      </View>
+       </View>
+      </Modal>
+
+      </View>
   );
 }
+
+
+const styles = StyleSheet.create({
+  ModalContainer:{
+    flex:1,
+    justifyContent:"flex-end",
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+
+  },
+  ModalStyle:{
+      backgroundColor:"#282528",
+      height:300
+  }
+});
 
 export default Tabs;
