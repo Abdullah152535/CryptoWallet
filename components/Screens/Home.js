@@ -35,13 +35,12 @@ const Home = (navigation) => {
         },[cryptoData])
 
         useEffect(() => {
-
-           console.log(getData(coin));
+            getData(coin)
           }, [coin]);
 
           async function getData(coinName){
             try {
-                console.log(coinName)
+                // console.log(coinName)
                 const response = await axios.get(`https://api.coingecko.com/api/v3/coins/${coinName}/market_chart?vs_currency=usd&days=7`);
                 const formatData = response.data.prices.map(function(i){
                     return{

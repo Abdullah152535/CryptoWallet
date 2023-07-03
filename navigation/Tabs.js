@@ -11,13 +11,15 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-
+import {IconTextButton} from '../components/buttons/IconTextButton';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
 function Tabs({navigation}) {
 
-  const [isVisible,setIsVisible] = useState(true);
+  const [isVisible,setIsVisible] = useState(false);
 
 
     function SetModal(){
@@ -89,17 +91,25 @@ function Tabs({navigation}) {
         })}
       />
       <Tab.Screen name="Market" component={Market} options={{headerShown:false}}/>
-      <Tab.Screen name="Profile" component={Profile} options={{headerShown:false}}/>
+      {/* <Tab.Screen name="Profile" component={Profile} options={{headerShown:false}}/> */}
     </Tab.Navigator>
     {/* Tab Navigator ends here and Modal Component starts */}
 
       <Modal visible={isVisible} transparent  >
       <View style={styles.ModalContainer} >
        <View style={styles.ModalStyle}>
-       <TouchableOpacity style={{width:100,height:70,backgroundColor:"grey",borderRadius:2}}
-      onPress={()=>closeModal()}>
 
-      </TouchableOpacity>
+       
+       <View style={{ height:60, margin:10}}><IconTextButton label={"Transfer"} icon={<Feather name="send" size={18} color="black"/>}  clickFunction={()=>closeModal()} /></View>
+       <View style={{height:60, margin:10}}><IconTextButton label={"Withdraw"} icon={<FontAwesome5 name="arrow-circle-down" size={18} color="black" />}  clickFunction={()=>closeModal()}/></View>
+
+       <View style={{alignItems:"center",marginTop:30}}>
+        <TouchableOpacity onPress={()=>closeModal()}>
+        <EvilIcons name="close" size={36} color="white" />
+        </TouchableOpacity>
+        </View>
+
+
       </View>
        </View>
       </Modal>
@@ -117,8 +127,14 @@ const styles = StyleSheet.create({
 
   },
   ModalStyle:{
+      display:"flex",
       backgroundColor:"#282528",
-      height:300
+      height:260,
+      padding:10,
+  },
+  buttons:{
+      display:"flex",
+      flex:0.5
   }
 });
 

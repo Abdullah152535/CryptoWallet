@@ -8,13 +8,13 @@ import {
 } from 'react-native';
 
 
-const IconTextButton = ({label,icon}) =>{
+const IconTextButton = ({label,icon,clickFunction}) =>{
     
     return (
-        <TouchableOpacity  style={styles.main}>
+        <TouchableOpacity  style={styles.main} onPress={clickFunction}>
            
                 <>{icon}</>
-                <Text style={{fontSize:14,color:"black",fontWeight:"bold", margin:10}}>{label}</Text>
+                <Text style={{fontSize:17,color:"black",fontWeight:"bold", margin:10}}>{label}</Text>
            
         </TouchableOpacity>
     )
