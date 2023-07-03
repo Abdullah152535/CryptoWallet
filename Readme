@@ -1,0 +1,25 @@
+This is a Simple Crypto Wallet App Which Displays the Latest prices and Percentage changes in them 
+Also There is a portfolio section which can show the holdings of the user on the screen . Since there is no Blockchain Linked 
+We can't add a transfer or withdraw feature
+For Portfolio  we can use dummy data but it is not used currently
+
+There are Login Sign Up screens from where we move to main Screens
+
+Then there is bottom Tab Navigation which provides navigation Between main Screens which are Home, Portfolio, Trade and Market Screen
+
+Home screen Displays the Balance Info of User 
+ALso data for Top crypto Currencies 
+
+The data of crypto Currencies is fetched From Coin Gecko API
+THe API is hit only once inside the provider component of Context API THen every screen consumes that context So we don't need to Hit API
+on every screen Separately
+Also We used Victory Native Library for Portraying price change of crypto currency in form of chart
+
+The chart is not animated because the Library which we originaly intended to use gave some dependency clashes ( React native reanimated and React Navigationn) These
+two libraries were using different versions of same Library internally ( React-native-gesture-handler) which caused some Clashed. I wasted 5 days on trying to resolve the clash but failed so instead I used simple chart Library
+
+We display Crypto currencies in a flatlist, whenever some item is clicked the chart of that crypto currency is displayed 
+
+FOr trade screen I added a Modal over the bottom Tab bar which is displayed over whichever screen we were on. The Modal closes on clicking any button
+
+ 
