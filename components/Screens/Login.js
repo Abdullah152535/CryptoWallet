@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { TextInput, Button, Text } from 'react-native-paper';
-
+import { auth } from '../../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    console.log('Email:', email);
-    console.log('Password:', password);
-    navigation.navigate('Tabs')
+  const handleLogin = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth,email, password);
+      const user = userCredential.user;
+      console.log('User signed in:', user);
+      navigation.navigate('Tabs'); // Navigate to the desired screen after sign-in
+    } catch (error) {
+      console.error('Error signing in:', error);
+      // Handle sign-in error, such as displaying an error message to the user
+    }
   };
 
   const handleForgotPassword = () => {
@@ -32,6 +39,7 @@ const Login = ({navigation}) => {
           theme={{ colors: { primary: '#FFFFFF'} }}
           underlineColor="#FFFFFF"
           selectionColor="#FFFFFF"
+           textColor='white'
           keyboardType="email-address"
           autoCapitalize="none"
           placeholderTextColor="#FFFFFF"
@@ -46,6 +54,7 @@ const Login = ({navigation}) => {
           theme={{ colors: { primary: '#FFFFFF'} }}
           underlineColor="#FFFFFF"
           selectionColor="#FFFFFF"
+           textColor='white'
         />
         <Button
           mode="contained"
