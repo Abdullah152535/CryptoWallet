@@ -1,25 +1,28 @@
-This is a Simple Crypto Wallet App Which Displays the Latest prices and Percentage changes in them 
-Also There is a portfolio section which can show the holdings of the user on the screen . Since there is no Blockchain Linked 
-We can't add a transfer or withdraw feature
-For Portfolio  we can use dummy data but it is not used currently
+Crypto Wallet App
+This repository contains the source code for a simple Crypto Wallet App developed as a semester project for Mobile App Development. The app is built using React Native and Firebase for user authentication on login and signup screens. The primary functionality revolves around utilizing the Coin Gecko API to display the latest prices and percentage changes of top cryptocurrencies.
 
-There are Login Sign Up screens from where we move to main Screens
+Features
+Login and Signup Screens: User authentication is handled through Firebase on dedicated login and signup screens.
+Home Screen: Displays the user's balance information and data for top cryptocurrencies.
+Trade Screen: Features a modal over the bottom tab bar, allowing users to interact with trade-related functionalities.
+Market Screen: Presents the latest market data for cryptocurrencies.
 
-Then there is bottom Tab Navigation which provides navigation Between main Screens which are Home, Portfolio, Trade and Market Screen
+Technologies Used
+React Native: The framework used for developing the mobile application.
+Firebase: Utilized for user authentication on login and signup screens.
 
-Home screen Displays the Balance Info of User 
-ALso data for Top crypto Currencies 
+Usage
 
-The data of crypto Currencies is fetched From Coin Gecko API
-THe API is hit only once inside the provider component of Context API THen every screen consumes that context So we don't need to Hit API
-on every screen Separately
-Also We used Victory Native Library for Portraying price change of crypto currency in form of chart
+Clone the repository:
+git clone https://github.com/Abdullah152535/CryptoWallet
+cd CryptoWallet
 
-The chart is not animated because the Library which we originaly intended to use gave some dependency clashes ( React native reanimated and React Navigationn) These
-two libraries were using different versions of same Library internally ( React-native-gesture-handler) which caused some Clashed. I wasted 5 days on trying to resolve the clash but failed so instead I used simple chart Library
+Install dependencies:
+npm install
 
-We display Crypto currencies in a flatlist, whenever some item is clicked the chart of that crypto currency is displayed 
+Run the application:
+npx expo start
 
-FOr trade screen I added a Modal over the bottom Tab bar which is displayed over whichever screen we were on. The Modal closes on clicking any button
+Note:
+The Portfolio screen has been temporarily removed from this version. The app efficiently utilizes the Coin Gecko API, fetching cryptocurrency data only once inside the provider component of the Context API. This optimization ensures data fetching across screens without redundant API calls.
 
- 
