@@ -18,19 +18,23 @@ This repository contains the source code for a simple Crypto Wallet App develope
 
 1. **Clone the repository:**
 
-```bash
-git clone https://github.com/Abdullah152535/CryptoWallet
-cd CryptoWallet
+    ```bash
+    git clone https://github.com/Abdullah152535/CryptoWallet
+    cd CryptoWallet
+    ```
 
+2. **Install dependencies:**
 
-2.Install dependencies:
-```bash
-npm install
+    ```bash
+    npm install
+    ```
 
-3.Run the application:
-```bash
-npx expo start
+3. **Run the application:**
 
-##Note:
+    ```bash
+    npx expo start
+    ```
+
+## Note
+
 The Portfolio screen has been temporarily removed from this version. The app efficiently utilizes the Coin Gecko API, fetching cryptocurrency data only once inside the provider component of the Context API. This optimization ensures data fetching across screens without redundant API calls.
-
